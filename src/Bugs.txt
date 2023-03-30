@@ -1,0 +1,2 @@
+1. Add Delete button for input
+2.Use Css to add visual flare

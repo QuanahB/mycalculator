@@ -1,0 +1,14 @@
+//Results should be text with a "Delete" and "Use in input" buttons
+import React from "react";
+
+export default function Results({number}){
+    return(
+        <>
+        <br></br>
+        <p>{number}</p>
+        <button>Reuse</button>
+        <button>Delete</button>
+        <br></br>
+        </>
+    )
+}
