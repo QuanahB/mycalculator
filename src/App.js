@@ -1,6 +1,8 @@
 import React, {useState,useRef, useEffect} from 'react';
 import ResultsList from './ResultsList';
 import { v4 as uuidv4 } from 'uuid'
+import { evaluate } from 'mathjs';
+
 
 function App() {
 
@@ -97,18 +99,12 @@ function App() {
     input.current.value = "";
   }
 
-  function parse(str) {
-    /*jslint evil: true */
-    return Function(`'use strict'; return (${str})`)()
-  }
-
   //Solves mathematical sequence on update of "items" array when ending with a number
   useEffect(() => {
 
     if(!isNaN(items[items.length - 1])){
       const newList = items.join('');
-      //const answer = eval(newList)
-      let answer = parse(newList);
+      let answer = evaluate(newList);
       console.log(answer);
       updateAnswer(answer);
       addItems([answer,"+"]);
