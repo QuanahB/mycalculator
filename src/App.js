@@ -97,12 +97,18 @@ function App() {
     input.current.value = "";
   }
 
+  function parse(str) {
+    /*jslint evil: true */
+    return Function(`'use strict'; return (${str})`)()
+  }
+
   //Solves mathematical sequence on update of "items" array when ending with a number
   useEffect(() => {
 
     if(!isNaN(items[items.length - 1])){
       const newList = items.join('');
-      const answer = eval(newList)
+      //const answer = eval(newList)
+      let answer = parse(newList);
       console.log(answer);
       updateAnswer(answer);
       addItems([answer,"+"]);
